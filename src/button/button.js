@@ -1,137 +1,123 @@
-import React, {PropTypes} from 'react';
-import {
-    StyleSheet,
-    TouchableHighlight,
-    View
-} from 'react-native';
-import ButtonText from './button_text';
-import V from '../variable';
+import React, { PropTypes } from "react";
+import { StyleSheet, TouchableHighlight, View } from "react-native";
+import ButtonText from "./button_text";
+import V from "../variable";
 
 const styles = StyleSheet.create({
-    button: {
-        borderRadius: V.btnBorderRadius,
-        borderWidth: StyleSheet.hairlineWidth,
-        paddingLeft: 14,
-        paddingRight: 14,
-        borderColor: V.borderColor,
-        overflow: 'hidden'
-    },
+  button: {
+    borderRadius: V.btnBorderRadius,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingLeft: 14,
+    paddingRight: 14,
+    borderColor: V.borderColor,
+    overflow: "hidden"
+  },
 
-    mini: {
-        paddingLeft: V.btnMiniFontSize * 0.75,
-        paddingRight: V.btnMiniFontSize * 0.75
-    },
+  mini: {
+    paddingLeft: V.btnMiniFontSize * 0.75,
+    paddingRight: V.btnMiniFontSize * 0.75
+  },
 
-    default: {
-        backgroundColor: V.btnDefaultBg
-    },
+  default: {
+    backgroundColor: V.btnDefaultBg
+  },
 
-    primary: {
-        backgroundColor: V.primaryColor
-    },
+  primary: {
+    backgroundColor: V.primaryColor
+  },
 
+  warn: {
+    backgroundColor: V.warnColor
+  },
 
-    warn: {
-        backgroundColor: V.warnColor
-    },
+  primaryPlain: {
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: V.primaryColor,
+    backgroundColor: "transparent"
+  },
 
-    primaryPlain: {
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: V.primaryColor,
-        backgroundColor: 'transparent'
-    },
-
-    defaultPlain: {
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: V.defaultColor,
-        backgroundColor: 'transparent'
-    }
+  defaultPlain: {
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: V.defaultColor,
+    backgroundColor: "transparent"
+  }
 });
 
-const getButtonStyles = ({type, plain, size}) => {
-    const config = [styles[type]];
-    if (plain) config.push(styles[`${type}Plain`]);
-    if (size === 'small') {
-        config.push(styles.mini);
-    }
-    return config;
+const getButtonStyles = ({ type, plain, size }) => {
+  const config = [styles[type]];
+  if (plain) config.push(styles[`${type}Plain`]);
+  if (size === "small") {
+    config.push(styles.mini);
+  }
+  return config;
 };
 
 const getUnderlayColor = (type, plain) => {
-    if (plain) {
-        return V.activeColor;
-    }
-    switch (type) {
-        case 'primary':
-            return V.primaryColorActive;
-        case 'warn':
-            return V.warnColorActive;
+  if (plain) {
+    return V.activeColor;
+  }
+  switch (type) {
+    case "primary":
+      return V.primaryColorActive;
+    case "warn":
+      return V.warnColorActive;
 
-        default:
-            return V.activeColor;
-    }
+    default:
+      return V.activeColor;
+  }
 };
 
+const Button = props => {
+  const { disabled, type, size, plain, children, style, ...rest } = props;
 
-const Button = (props) => {
-    const {
-        disabled,
-        type,
-        size,
-        plain,
-        children,
-        style,
-        ...rest
-    } = props;
+  const buttonStyles = getButtonStyles({ type, plain, size, disabled });
 
-    const buttonStyles = getButtonStyles({type, plain, size, disabled});
+  let touchableProps = {};
+  if (!disabled) {
+    touchableProps = rest;
+  }
 
-    let touchableProps = {};
-    if (!disabled) {
-        touchableProps = rest;
-    }
-
-    if (disabled) {
-        return (
-            <View style={[styles.button, ...buttonStyles, style]}>
-                <ButtonText {...{type, plain, size, disabled}}>{children}</ButtonText>
-            </View>
-        );
-    }
-
-    const underlayColor = getUnderlayColor(type, plain);
-
+  if (disabled) {
     return (
-        <TouchableHighlight
-            style={[styles.button, ...buttonStyles, style]}
-            underlayColor={underlayColor}
-            {...touchableProps}
-        >
-            <View>
-                <ButtonText {...{type, plain, size, disabled}}>{children}</ButtonText>
-            </View>
-        </TouchableHighlight>
+      <View style={[styles.button, ...buttonStyles, style]}>
+        <ButtonText {...{ type, plain, size, disabled }}>{children}</ButtonText>
+      </View>
     );
+  }
+
+  const underlayColor = getUnderlayColor(type, plain);
+
+  return (
+    <TouchableHighlight
+      style={[styles.button, ...buttonStyles, style]}
+      underlayColor={underlayColor}
+      {...touchableProps}
+    >
+      <View>
+        <ButtonText {...{ type, plain, size, disabled }}>{children}</ButtonText>
+      </View>
+    </TouchableHighlight>
+  );
 };
 
 Button.propTypes = {
-    type: PropTypes.oneOf(['default', 'primary', 'warn']),
-    size: PropTypes.oneOf(['small']),
-    plain: PropTypes.bool,
-    disabled: PropTypes.bool,
-    onPress: PropTypes.func,
-    onPressIn: PropTypes.func,
-    onPressOut: PropTypes.func,
-    onLongPress: PropTypes.func,
-    children: PropTypes.node
+  type: PropTypes.oneOf(["default", "primary", "warn"]),
+  size: PropTypes.oneOf(["small"]),
+  plain: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onPress: PropTypes.func,
+  onPressIn: PropTypes.func,
+  onPressOut: PropTypes.func,
+  onLongPress: PropTypes.func,
+  children: PropTypes.node
 };
 
 Button.defaultProps = {
-    type: 'default',
-    disabled: false,
-    plain: false
+  type: "default",
+  disabled: false,
+  plain: false
 };
 
 export default Button;

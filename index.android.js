@@ -1,15 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
-import {
-    AppRegistry
-} from 'react-native';
+import { AppRegistry } from "react-native";
 
-import Demo from './demo/index';
+import Demo from "./demo/index";
 
 class ReactNativeGM extends Component {
-    render() {
-        return <Demo/>;
-    }
+  render() {
+    return <Demo />;
+  }
 }
 
-AppRegistry.registerComponent('ReactNativeGM', () => ReactNativeGM);
+AppRegistry.registerComponent("ReactNativeGM", () => ReactNativeGM);

@@ -1,36 +1,42 @@
-import React from 'react';
+import React from "react";
+import { View, Text as RNText } from "react-native";
 import {
-    View,
-    Text as RNText
-} from 'react-native';
-import {Header, H1, H2, H3, H4, Styles as S, Page, Text} from '../../src/index';
+  Header,
+  H1,
+  H2,
+  H3,
+  H4,
+  Styles as S,
+  Page,
+  Text
+} from "../../src/index";
 
 class Component extends React.Component {
-    render() {
-        const {navigator} = this.props;
-        return (
-            <Page header={<Header navigator={navigator} pageName={'排版'}/>}>
-                <H1>标题一</H1>
-                <H2 style={{backgroundColor: 'red'}}>标题二</H2>
-                <H3>标题三</H3>
-                <H4>标题四</H4>
+  render() {
+    const { navigator } = this.props;
+    return (
+      <Page header={<Header navigator={navigator} pageName={"排版"} />}>
+        <H1>标题一</H1>
+        <H2 style={{ backgroundColor: "red" }}>标题二</H2>
+        <H3>标题三</H3>
+        <H4>标题四</H4>
 
-                <Text>默认字体</Text>
-                <Text>默认字体</Text>
-                <Text>默认字体</Text>
-                <Text>默认字体</Text>
-                <Text>默认字体</Text>
+        <Text>默认字体</Text>
+        <Text>默认字体</Text>
+        <Text>默认字体</Text>
+        <Text>默认字体</Text>
+        <Text>默认字体</Text>
 
-                <RNText>原生默认字体</RNText>
-                <RNText>原生默认字体</RNText>
-                <RNText>原生默认字体</RNText>
-                <RNText>原生默认字体</RNText>
-                <RNText>原生默认字体</RNText>
+        <RNText>原生默认字体</RNText>
+        <RNText>原生默认字体</RNText>
+        <RNText>原生默认字体</RNText>
+        <RNText>原生默认字体</RNText>
+        <RNText>原生默认字体</RNText>
 
-                <View style={S.borderBottom}/>
-            </Page>
-        );
-    }
+        <View style={S.borderBottom} />
+      </Page>
+    );
+  }
 }
 
 export default Component;

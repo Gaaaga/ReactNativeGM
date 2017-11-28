@@ -1,5 +1,2 @@
-import {Tabbar, TabbarItem} from './tabbar';
-export {
-    Tabbar,
-    TabbarItem
-};
+import { Tabbar, TabbarItem } from "./tabbar";
+export { Tabbar, TabbarItem };

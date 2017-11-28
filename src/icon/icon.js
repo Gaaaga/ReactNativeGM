@@ -1,31 +1,19 @@
-import React, {PropTypes} from 'react';
-import {Text} from 'react-native';
-import {Weui, glyphMap} from './weui';
-import G from '../global/variable';
+import React, { PropTypes } from "react";
+import { Text } from "react-native";
+import { Weui, glyphMap } from "./weui";
+import G from "../global/variable";
 
-const Icon = (props) => {
-    const {
-        name,
-        size = G.fontSize16,
-        color = G.defaultColor,
-        style
-    } = props;
+const Icon = props => {
+  const { name, size = G.fontSize16, color = G.defaultColor, style } = props;
 
-    return (
-        <Weui
-            name={name}
-            size={size}
-            color={color}
-            style={style}
-        />
-    );
+  return <Weui name={name} size={size} color={color} style={style} />;
 };
 
 Icon.propTypes = {
-    name: PropTypes.string.isRequired,
-    size: PropTypes.number,
-    color: PropTypes.string,
-    style: Text.propTypes.style
+  name: PropTypes.string.isRequired,
+  size: PropTypes.number,
+  color: PropTypes.string,
+  style: Text.propTypes.style
 };
 
 Icon.glyphMap = glyphMap;

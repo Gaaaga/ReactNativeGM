@@ -1,10 +1,8 @@
 module.exports = {
-    "plugins": [
-        "gm"
-    ],
-    "extends": ["plugin:gm/recommended"],
+  plugins: ["gm"],
+  extends: ["plugin:gm/recommended"],
 
-    "rules": {
-        "react/display-name": 0
-    }
+  rules: {
+    "react/display-name": 0
+  }
 };

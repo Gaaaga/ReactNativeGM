@@ -1,5 +1,3 @@
-import SearchBar from './search_bar';
+import SearchBar from "./search_bar";
 
-export {
-    SearchBar
-};
+export { SearchBar };

@@ -1,31 +1,19 @@
-import React, {PropTypes} from 'react';
-import {Text} from 'react-native';
-import {IconFont, glyphMap} from './iconfont';
-import G from '../global/variable';
+import React, { PropTypes } from "react";
+import { Text } from "react-native";
+import { IconFont, glyphMap } from "./iconfont";
+import G from "../global/variable";
 
-const IFont = (props) => {
-    const {
-        name,
-        size = G.fontSize16,
-        color = G.defaultColor,
-        style
-    } = props;
+const IFont = props => {
+  const { name, size = G.fontSize16, color = G.defaultColor, style } = props;
 
-    return (
-        <IconFont
-            name={name}
-            size={size}
-            color={color}
-            style={style}
-        />
-    );
+  return <IconFont name={name} size={size} color={color} style={style} />;
 };
 
 IFont.propTypes = {
-    name: PropTypes.string.isRequired,
-    size: PropTypes.number,
-    color: PropTypes.string,
-    style: Text.propTypes.style
+  name: PropTypes.string.isRequired,
+  size: PropTypes.number,
+  color: PropTypes.string,
+  style: Text.propTypes.style
 };
 
 IFont.glyphMap = glyphMap;

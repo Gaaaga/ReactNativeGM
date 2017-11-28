@@ -1,5 +1,3 @@
-import Square from './square';
+import Square from "./square";
 
-export {
-    Square
-};
+export { Square };

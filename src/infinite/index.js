@@ -1,5 +1,3 @@
-import Infinite from './infinite';
+import Infinite from "./infinite";
 
-export {
-    Infinite
-};
+export { Infinite };
