@@ -1,9 +1,5 @@
-import TextArea from './textarea';
-import Radio from './radio';
-import TextInput from './textinput';
+import TextArea from "./textarea";
+import Radio from "./radio";
+import TextInput from "./textinput";
 
-export {
-    TextArea,
-    Radio,
-    TextInput
-};
+export { TextArea, Radio, TextInput };
